@@ -1,0 +1,21 @@
+.wrap{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+.card{
+    width: 400px;
+    height: 800px;
+    border: 1px solid #e2a8a8;
+    border-radius: 20px;
+    margin-right: 14px;
+    margin-bottom: 14px;
+    padding: 10px;
+}
+h3{
+    color: #b44141;
+}
+.photo{
+    width: 200px;
+}

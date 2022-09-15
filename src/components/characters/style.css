@@ -1,0 +1,20 @@
+.wrap {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card {
+    display: flex;
+    width: 30%;
+    background: aliceblue;
+    border-radius: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    padding: 20px;
+
+}
+.photo{
+    border-radius: 10px;
+    box-shadow: 8px 10px 10px #c8e8ef;
+}

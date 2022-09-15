@@ -1,12 +1,11 @@
 import './App.css';
 import Simpsons from "./components/Simpsons/Simpsons";
-import simpson from "./components/Simpson/Simpson";
 
 function App() {
 
     return (
         <div>
-            <Simpsons simpson={simpson} key={simpson.age}/>
+            <Simpsons/>
         </div>
     );
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {simpsons} from "../data";
 import Simpson from "../Simpson/Simpson";
 import '../Simpson/style.css'

@@ -3,13 +3,13 @@ import React, {useEffect, useState} from 'react';
 import '../spaceship/style.css'
 import {getSpace} from "../../services/spaceService";
 import Spaceship from "../spaceship/Spaceship";
+import {logDOM} from "@testing-library/react";
 
 const Spaceships = () => {
     const [spaceships, setSpaceships] = useState([]);
     useEffect(() => {
         getSpace().then(value =>
-        const filterArr = value.filter(value => value.data.launch_year !== 2020)
-        setSpaceships(filterArr)
+        setSpaceships(value.data.filter(value => value.launch_year !== "2020")))
     }, []);
 
     return (

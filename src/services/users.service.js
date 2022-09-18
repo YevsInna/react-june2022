@@ -8,8 +8,8 @@ const getUsers = ()=>{
     return axiosInstance.get()
 };
 
-const getUser = (id)=>{
-    return axiosInstance.get(`/${id}`)
-};
+// const getUser = (id)=>{
+//     return axiosInstance.get(`/${id}`)
+// };
 
-export {getUser, getUsers};
+export {getUsers};

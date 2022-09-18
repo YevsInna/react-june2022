@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import User from "../user/User";
 import {getUsers} from "../../services/users.service";
+import Details from "../details/Details";
 
 const Users = () => {
     const [users, setUsers] = useState([]);
@@ -16,14 +17,7 @@ const Users = () => {
 
     return (
         <div>
-            {user &&
-                <div>
-                    <p>Username - {user.username}</p>
-                    <p>Email: {user.email}</p>
-                    <p>Telephone number:{user.phone}</p>
-                    <p>Website: {user.website}</p>
-                    <p>Addresse: {user.address.city}, {user.address.street} street</p>
-                </div>}
+            {user && <Details user={user} key={user.id}/>}
             {
                 users.map(user => <User user={user} key={user.id} lift={lift}/>)
             }

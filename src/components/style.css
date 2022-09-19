@@ -1,0 +1,39 @@
+.card{
+    margin: 14px;
+    padding: 10px;
+    border: solid 1px black;
+    background: linear-gradient(#a4bbf5, #f1f1b1);
+    border-radius: 10px;
+    width: 45%;
+    text-align: center;
+}
+
+.wrap{
+    display: flex;
+    flex-wrap: wrap;
+}
+.button{
+    width: 200px;
+    height: 50px;
+    border-radius: 10px;
+    color: #1d249a;
+    font-size: 20px;
+    cursor: pointer;
+    background: linear-gradient(#4172ec, #e5e551);
+}
+.button:hover{
+    background: #252ecb;
+    color: #e5e551;
+    transition-duration: 800ms;
+}
+.posts{
+    display: flex;
+    flex-wrap: wrap;
+}
+.post{
+    width: 30%;
+    background: #f5f5e1;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 14px;
+}

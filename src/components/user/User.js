@@ -2,8 +2,7 @@ import React from 'react';
 
 import '../style.css'
 
-const User = (props) => {
-    let {user, lift} = props;
+const User = ({user, getUserId}) => {
 
     return (
         <div className="card">
@@ -12,9 +11,9 @@ const User = (props) => {
             <h3>Email: {user.email}</h3>
             <h3>Telephone number: {user.phone}</h3>
             <h3>Website: {user.website}</h3>
-            <button className="button" onClick={()=>{
-                    lift(user)
-            }}>Posts of user</button>
+            <button className="button" onClick={
+                ()=>getUserId(user.id)
+            }>Posts of user</button>
         </div>
     );
 };

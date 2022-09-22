@@ -3,17 +3,19 @@ import {useState} from "react";
 import './App.css';
 import Users from "./components/users/Users";
 import Posts from "./components/posts/Posts";
+import {postService} from "./services";
+
 
 function App() {
-    const [user, setUser] = useState(null);
-    const lift = (obj) => {
-        setUser(obj)
+    const [posts, setPosts] = useState([]);
+    const getUserId = (userId) => {
+        postService.getPosts(userId).then(value => setPosts(value.data))
     }
 
     return (
         <div>
-            {user&& <Posts/>}
-           <Users lift={lift}/>
+            <Posts posts={posts}/>
+           <Users getUserId={getUserId}/>
         </div>
     );
 }

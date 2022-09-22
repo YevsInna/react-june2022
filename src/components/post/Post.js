@@ -7,12 +7,9 @@ const Post = ({post}) => {
 
     return (
         <div className="post">
-
             <h3>User {post.userId} post {post.id}</h3>
             <p>{post.title}</p>
             <p>{post.body}</p>
-
-
         </div>
     );
 };

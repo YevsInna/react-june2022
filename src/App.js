@@ -1,12 +1,13 @@
-import logo from './logo.svg';
 import './App.css';
+import Cars from "./components/cars/Cars";
 
-function  App() {
-  return (
-    <div>
-     <h1>Hello</h1>
-    </div>
-  );
+function App() {
+    return (
+        <div>
+            Cars
+            <Cars/>
+        </div>
+    );
 }
 
 export default App;

@@ -1,10 +1,9 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 
 import css from './Car.module.css'
 import {carService} from "../../services";
-import {useForm} from "react-hook-form";
 
-const Car = ({car, setCars, updateCar}) => {
+const Car = ({car, setCars, setCarForUpdate}) => {
 
     const {id, model, price, year} = car;
 
@@ -17,8 +16,6 @@ const Car = ({car, setCars, updateCar}) => {
         })
     };
 
-
-
     return (
         <div className={css.Car}>
             <div>
@@ -28,7 +25,7 @@ const Car = ({car, setCars, updateCar}) => {
                 <div>year: {year}</div>
             </div>
             <div className={css.Tools}>
-                <button onClick={() => updateCar(car)}>Update</button>
+                <button onClick={()=> setCarForUpdate(car)}>Update</button>
                 <button onClick={() => deleteCar()}>Delete</button>
             </div>
         </div>

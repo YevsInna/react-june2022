@@ -7,4 +7,4 @@ const userService = {
     createUser: ()=> axiosService.post(urls.users, user)
 };
 
-export {userService}
+export {userService};

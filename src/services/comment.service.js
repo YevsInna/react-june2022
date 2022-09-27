@@ -4,7 +4,7 @@ import comment from "../components/comment/Comment";
 
 const commentService = {
     getAll: ()=>axiosService.get(urls.comments),
-    createComment: ()=>axiosService.post(urls.comments, comment)
+    createComment: (comment)=>axiosService.post(urls.comments, comment)
 };
 
 export {commentService};

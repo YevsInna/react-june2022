@@ -12,12 +12,12 @@ const initialState = {
 
 const getAll = createAsyncThunk(
     'postSlice/getAll',
-    async (_, {rejectedWithValue}) => {
+    async (_, {rejectWithValue}) => {
         try {
             const {data} = await postService.getAll();
             return data
         } catch (e) {
-            return rejectedWithValue(e.response.data)
+            return rejectWithValue(e.response.data)
         }
     }
 );

@@ -35,11 +35,11 @@ const getById = createAsyncThunk(
 
 const deleteById = createAsyncThunk(
     'userSlice/deleteById',
-    async ({id}, {rejectWithValue})=>{
+    async ({id}, {rejectWithValue}) => {
         try {
-            const {data} = await userService.deleteById(id);
-           return data
-        }catch (e){
+            await userService.deleteById(id);
+            return id
+        } catch (e) {
             return rejectWithValue(e.response.data)
         }
     }
@@ -82,8 +82,8 @@ const userSlice = createSlice({
             .addCase(getById.fulfilled, (state, action) => {
                 state.userFromAPI = action.payload
             })
-            .addCase(deleteById.fulfilled, (state, action)=>{
-                state.users.findIndex(user => user.id === action.payload);
+            .addCase(deleteById.fulfilled, (state, action) => {
+                const index = state.users.findIndex(user => user.id === action.payload);
                 state.users.splice(index, 1)
             })
 });

@@ -1,6 +1,6 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 
-import {postService} from "../../services";
+import {postService, userService} from "../../services";
 
 const initialState = {
     posts: [],
@@ -27,8 +27,21 @@ const getById = createAsyncThunk(
     async ({id}, {rejectedWithValue}) => {
         try {
             const {data} = await postService.getById(id)
+            return data
         } catch (e) {
             return rejectedWithValue(e.response.data)
+        }
+    }
+);
+
+const deleteById = createAsyncThunk(
+    'postSlice/deleteById',
+    async ({id}, {rejectWithValue}) => {
+        try {
+            await userService.deleteById(id);
+            return id
+        } catch (e) {
+            return rejectWithValue(e.response.data)
         }
     }
 );
@@ -61,10 +74,14 @@ const postSlice = createSlice({
             .addCase(getById.fulfilled, (state, action) => {
                 state.postFromApi = action.payload
             })
+            .addCase(deleteById.fulfilled, (state, action) => {
+                const index = state.posts.findIndex(post => post.id === action.payload);
+                state.posts.splice(index, 1)
+            })
 
 });
 
-const {reducer: postReducer, actions: {setCurrentPost, deleteById}} = postSlice;
+const {reducer: postReducer, actions: {setCurrentPost}} = postSlice;
 
 const postActions = {getAll, getById, setCurrentPost, deleteById};
 

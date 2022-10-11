@@ -5,9 +5,11 @@ import css from './Header.module.css'
 
 const Header = () => {
     const {currentUser} = useSelector(state => state.userReducer);
+    const {currentPost} = useSelector(state => state.postReducer);
     return (
         <div className={css.Header}>
-            {currentUser && currentUser.name}
+            <div>{currentUser && currentUser.name}</div>
+            <div>{currentPost && currentPost.title}</div>
         </div>
     );
 };

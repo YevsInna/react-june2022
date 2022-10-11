@@ -1,4 +1,5 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+
 import {userService} from "../../services";
 
 const initialState = {
@@ -10,23 +11,23 @@ const initialState = {
 };
 const getAll = createAsyncThunk(
     'userSlice/getAll',
-    async (_, {rejectedWithValue})=>{
+    async (_, {rejectedWithValue}) => {
         try {
             const {data} = await userService.getAll();
             return data
-        }catch (e) {
-          return rejectedWithValue(e.response.data)
+        } catch (e) {
+            return rejectedWithValue(e.response.data)
         }
     }
 );
 
 const getById = createAsyncThunk(
     'userSlice/getById',
-    async ({id}, {rejectWithValue})=>{
+    async ({id}, {rejectWithValue}) => {
         try {
-           const {data} = await userService.getById(id);
-           return data
-        }catch (e) {
+            const {data} = await userService.getById(id);
+            return data
+        } catch (e) {
             return rejectWithValue(e.response.data)
         }
     }
@@ -34,30 +35,35 @@ const getById = createAsyncThunk(
 const userSlice = createSlice({
     name: 'userSlice',
     initialState,
-    reducers:{
+    reducers: {
         // getAll:(state, action)=>{
         //     state.users = action.payload
         // },
-        setCurrentUser:(state, action)=>{
+        setCurrentUser: (state, action) => {
             state.currentUser = action.payload
+        },
+        deleteById: (state, action) => {
+            const index = state.users.findIndex(user => user.id === action.payload);
+            state.users.splice(index, 1)
         }
+
     },
     // extraReducers:{
     //     [getAll.fulfilled]:(state,action)=>{
     //         state.users = action.payload
     //     }
     // }
-    extraReducers:builder =>
+    extraReducers: builder =>
         builder
-            .addCase(getAll.fulfilled, (state, action)=>{
+            .addCase(getAll.fulfilled, (state, action) => {
                 state.users = action.payload
                 state.loading = false
             })
-            .addCase(getAll.rejected,(state,action)=>{
+            .addCase(getAll.rejected, (state, action) => {
                 state.error = action.payload
                 state.loading = false
             })
-            .addCase(getAll.pending, (state,action)=>{
+            .addCase(getAll.pending, (state, action) => {
                 state.loading = true
             })
             .addCase(getById.fulfilled, (state, action) => {
@@ -65,9 +71,9 @@ const userSlice = createSlice({
             })
 });
 
-const {reducer: userReducer, actions: {setCurrentUser}} = userSlice;
+const {reducer: userReducer, actions: {setCurrentUser, deleteById}} = userSlice;
 
-const userActions = {getAll, setCurrentUser, getById};
+const userActions = {getAll, setCurrentUser, getById, deleteById};
 
 export {
     userReducer, userActions

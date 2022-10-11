@@ -10,8 +10,9 @@ const User = ({user}) => {
             <div>{user.id} - {user.name}</div>
             <div>username: {user.username}</div>
             <div>email: {user.email}</div>
-            <button onClick={()=>dispatch(userActions.setCurrentUser(user))}>SELECT</button>
-            <button onClick={()=> dispatch(userActions.getById({id}))}>get from API</button>
+            <button onClick={() => dispatch(userActions.setCurrentUser(user))}>SELECT</button>
+            <button onClick={() => dispatch(userActions.getById({id}))}>get from API</button>
+            <button onClick={() => dispatch(userActions.getById(id))}>DELETE</button>
         </div>
     );
 };

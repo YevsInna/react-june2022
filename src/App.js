@@ -6,7 +6,7 @@ function App() {
     return (
         <div>
             <Header/>
-            <div>
+            <div className={"header"}>
                 <Users/>
                 <Posts/>
             </div>

@@ -5,6 +5,7 @@
     width: 150px;
     text-align: center;
 }
-.Tools button{
-    margin: 8px;
+.Wrap{
+    display: flex;
+    flex-wrap: wrap;
 }

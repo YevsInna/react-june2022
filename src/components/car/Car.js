@@ -1,36 +1,26 @@
 import React from 'react';
 
+import {useDispatch} from "react-redux";
 import css from './Car.module.css'
-import {carService} from "../../services";
+import {carAction} from "../../redux";
 
-const Car = ({car, setCars, setCarForUpdate}) => {
-
+const Car = ({car}) => {
     const {id, model, price, year} = car;
 
-    const deleteCar = async () => {
-        await carService.deleteById(id);
-        setCars(cars => {
-            const index = cars.findIndex(value => value.id === id);
-            cars.splice(index, 1);
-            return [...cars];
-        })
-    };
+    const dispatch = useDispatch();
 
     return (
-        <div className={css.Car}>
-            <div>
-                <div>id: {id}</div>
-                <div>model: {model}</div>
-                <div>price: {price}</div>
-                <div>year: {year}</div>
+
+            <div className={css.Car}>
+                <div>ID: {id}</div>
+                <div>MODEL: {model}</div>
+                <div>PRICE: {price}</div>
+                <div>YEAR: {year}</div>
+                <button onClick={() => dispatch(carAction.setCarForUpdate(car))}>UPDATE</button>
+                <button onClick={() => dispatch(carAction.deleteById({id}))}>DELETE</button>
             </div>
-            <div className={css.Tools}>
-                <button onClick={()=> setCarForUpdate(car)}>Update</button>
-                <button onClick={() => deleteCar()}>Delete</button>
-            </div>
-        </div>
 
     );
 };
 
-export default Car;
+export {Car};
